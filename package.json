@@ -4,9 +4,13 @@
   "description": "make react app without CRA",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack",
-    "test": "test"
+    "start": "npm build:dev && node ./dist/server.js",
+    "start:wds": "webpack-dev-server --env=dev --profile --colors",
+    "build": "rm -rf dist/ && NODE_ENV=production npm build:client && NODE_ENV=production npm build:server",
+    "build:dev": "rm -rf dist/ && NODE_ENV=development npm build:client && NODE_ENV=development npm build:server",
+    "build:server": "webpack --env=server --progress --profile --colors",
+    "build:client": "webpack --env=client --progress --profile --colors",
+    "test": "jest --watchAll"
   },
   "repository": {
     "type": "git",
@@ -23,11 +27,13 @@
   },
   "homepage": "https://github.com/Elli-Jeon/react_without-cra#readme",
   "dependencies": {
-    "@types/react": "^17.0.39",
-    "@types/react-dom": "^17.0.11",
+    "@loadable/component": "^5.15.2",
+    "@loadable/server": "^5.15.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
     "react-hot-loader": "^4.13.0",
+    "react-router-dom": "^6.3.0",
     "typescript": "^4.5.5"
   },
   "devDependencies": {
@@ -36,6 +42,13 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
+    "@loadable/webpack-plugin": "^5.15.2",
+    "@types/loadable__component": "^5.13.4",
+    "@types/loadable__server": "^5.12.6",
+    "@types/react": "^17.0.48",
+    "@types/react-dom": "^18.0.6",
+    "@types/react-helmet": "^6.1.5",
+    "@types/webpack-env": "^1.17.0",
     "@typescript-eslint/eslint-plugin": "^5.12.0",
     "babel-loader": "^8.2.3",
     "babel-plugin-module-resolver": "^4.1.0",
@@ -47,11 +60,16 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
     "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.1",
     "prettier": "^2.5.1",
     "prettier-eslint": "^13.0.0",
     "style-loader": "^3.3.1",
+    "typescript-plugin-styled-components": "^2.0.0",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.7.4"
+    "webpack-dev-middleware": "^5.3.3",
+    "webpack-dev-server": "^4.7.4",
+    "webpack-hot-middleware": "^2.25.2",
+    "webpack-node-externals": "^3.0.0"
   }
 }

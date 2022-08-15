@@ -1,6 +1,6 @@
-# react_without-cra (2022-08-15)
+# custom SSR (2022-08-15)
 
-react without create-react-app using webpack, babel
+webpack, babel, @loadable-component를 사용해서 next 없이 SSR 구현
 
 ## How to Start
 

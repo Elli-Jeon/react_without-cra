@@ -33,6 +33,10 @@ module.exports = {
         paths: ["./src"],
       },
     },
+    //module resolution 할 때 tsconfig.json 을 우선적으로 적용
+    typescript: {
+      alwaysTryTypes: true,
+    },
   },
   rules: {
     // Existing rules

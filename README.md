@@ -1,4 +1,4 @@
-# react_without-cra
+# react_without-cra (2022-08-15)
 
 react without create-react-app using webpack, babel
 
